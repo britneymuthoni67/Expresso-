@@ -1,70 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Graduation Announcement</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Graduation Surprise 🎓</title>
 
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #000000, #1a1a1a);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    .card {
-      background: rgba(255,255,255,0.1);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-      width: 80%;
-      max-width: 500px;
+    body{
+      overflow:hidden;
+      font-family:Arial, sans-serif;
+      background:black;
+      height:100vh;
+      color:white;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: gold;
+    /* Background Horror Glow */
+    body::before{
+      content:"";
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:
+      radial-gradient(circle, rgba(255,0,0,0.2), transparent 70%);
+      animation:bgFlash 3s infinite;
     }
 
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
+    @keyframes bgFlash{
+      0%{opacity:0.3;}
+      50%{opacity:1;}
+      100%{opacity:0.3;}
     }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+    /* Hearts */
+    .heart{
+      position:absolute;
+      color:pink;
+      font-size:25px;
+      animation:float 6s linear infinite;
+      z-index:2;
     }
 
-    .emoji {
-      font-size: 4rem;
+    @keyframes float{
+      from{
+        transform:translateY(100vh);
+        opacity:1;
+      }
+      to{
+        transform:translateY(-120vh);
+        opacity:0;
+      }
     }
+
+    /* Graduation Card */
+    .card{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      width:85%;
+      max-width:500px;
+      padding:40px;
+      border-radius:25px;
+      text-align:center;
+      background:rgba(255,255,255,0.1);
+      backdrop-filter:blur(10px);
+      box-shadow:0 0 30px gold;
+      z-index:5;
+      animation:pop 1.5s ease;
+    }
+
+    @keyframes pop{
+      0%{
+        transform:translate(-50%, -50%) scale(0);
+      }
+      100%{
+        transform:translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .profile{
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      object-fit:cover;
+      border:5px solid gold;
+      margin-bottom:20px;
+      animation:glowPic 2s infinite alternate;
+    }
+
+    @keyframes glowPic{
+      from{
+        box-shadow:0 0 10px gold;
+      }
+      to{
+        box-shadow:0 0 30px white;
+      }
+    }
+
+    h1{
+      font-size:3rem;
+      color:gold;
+      animation:titleGlow 2s infinite alternate;
+    }
+
+    @keyframes titleGlow{
+      from{
+        text-shadow:0 0 10px gold;
+      }
+      to{
+        text-shadow:0 0 30px red;
+      }
+    }
+
+    p{
+      margin-top:15px;
+      font-size:1.2rem;
+      line-height:1.5;
+    }
+
+    /* Invite Popup */
+    .popup{
+      position:absolute;
+      top:20px;
+      right:-400px;
+      background:crimson;
+      padding:15px 25px;
+      border-radius:20px;
+      font-weight:bold;
+      z-index:10;
+      animation:slideIn 3s forwards;
+    }
+
+    @keyframes slideIn{
+      from{
+        right:-400px;
+      }
+      to{
+        right:20px;
+      }
+    }
+
+    /* Super Car */
+    .car{
+      position:absolute;
+      bottom:30px;
+      left:-500px;
+      width:350px;
+      z-index:4;
+      animation:drive 6s linear infinite;
+    }
+
+    @keyframes drive{
+      from{
+        left:-500px;
+      }
+      to{
+        left:120%;
+      }
+    }
+
+    /* Scary Flash */
+    .flash{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:white;
+      opacity:0;
+      z-index:15;
+      animation:flashBang 8s infinite;
+    }
+
+    @keyframes flashBang{
+      0%,95%,100%{
+        opacity:0;
+      }
+      96%{
+        opacity:1;
+      }
+    }
+
+    /* Jump Scare */
+    .ghost{
+      position:absolute;
+      width:300px;
+      left:50%;
+      top:-400px;
+      transform:translateX(-50%);
+      z-index:20;
+      animation:jumpscare 10s forwards infinite;
+    }
+
+    @keyframes jumpscare{
+      0%,80%{
+        top:-400px;
+      }
+
+      90%{
+        top:120px;
+      }
+
+      100%{
+        top:-400px;
+      }
+    }
+
+    /* Scary Text */
+    .scary{
+      position:absolute;
+      bottom:100px;
+      width:100%;
+      text-align:center;
+      font-size:2rem;
+      color:red;
+      font-weight:bold;
+      z-index:12;
+      animation:blink 1s infinite;
+    }
+
+    @keyframes blink{
+      50%{
+        opacity:0;
+      }
+    }
+
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="emoji">🎓</div>
-    <h1>I'M GRADUATING!</h1>
-    <h2>Class of 2026</h2>
+  <!-- Horror Flash -->
+  <div class="flash"></div>
 
-    <p>
-      The late nights, stress, assignments and hard work finally paid off.
-      Your girl did it 💫
-    </p>
+  <!-- Hearts -->
+  <div class="heart" style="left:10%; animation-delay:0s;">❤</div>
+  <div class="heart" style="left:20%; animation-delay:2s;">❤</div>
+  <div class="heart" style="left:40%; animation-delay:1s;">❤</div>
+  <div class="heart" style="left:60%; animation-delay:3s;">❤</div>
+  <div class="heart" style="left:80%; animation-delay:4s;">❤</div>
 
-    <p>
-      Thank you to everyone who supported me on this journey ❤️
-    </p>
+  <!-- Popup -->
+  <div class="popup">
+    🎉 YOU'RE INVITED TO MY GRADUATION 🎓
   </div>
+
+  <!-- Car -->
+  <img 
+    src="https://pngimg.com/d/sports_car_PNG37.png"
+    class="car"
+  >
+
+  <!-- Graduation Card -->
+  <div class="card">
+
+    <img 
+      src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop"
+      class="profile"
+    >
+
+    <h1>I'M GRADUATING 🎓</h1>
+
+    <p>
+      The stress, tears, assignments and sleepless nights finally paid off 💫
+    </p>
+
+    <p>
+      Come celebrate this unforgettable moment with me ❤️
+    </p>
+
+  </div>
+
+  <!-- Scary Text -->
+  <div class="scary">
+    SOMETHING IS COMING...
+  </div>
+
+  <!-- Ghost Face -->
+  <img 
+    src="https://i.imgur.com/7l0KX8A.png"
+    class="ghost"
+  >
 
 </body>
 </html>
